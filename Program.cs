@@ -138,25 +138,25 @@ namespace CSCI2910_Lab1
             Console.Write("\nPLease enter a genre: ");
             string userGenre = Console.ReadLine();
 
-            PublisherData(userPublisher, videogames);
+            GenreData(userGenre, videogames);
 
-            void GenreData(string userGenre, List<VideoGame> games2)
+            void GenreData(string userGenre, List<VideoGame> games3)
             {
-                IEnumerable<string> genres = games2.Select(x => x.Genre);
+                IEnumerable<string> genres = games3.Select(x => x.Genre);
                 List<string> genres2 = genres.Distinct().ToList();
 
                 IEnumerable<VideoGame> genreCompared = new List<VideoGame>();
-                genreCompared = games2.Where(game => game.Genre == userGenre);
+                genreCompared = games3.Where(game => game.Genre == userGenre);
 
                 foreach (var item in genreCompared)
                 {
                     Console.WriteLine(item);
                 }
 
-                double genrePercentageCalc = (Convert.ToDouble(genreCompared.Count()) / Convert.ToDouble(games2.Count()) * 100);
+                double genrePercentageCalc = (Convert.ToDouble(genreCompared.Count()) / Convert.ToDouble(games3.Count()) * 100);
                 double genrePercentage = Math.Round(genrePercentageCalc, 2);
 
-                Console.Write($"\nOut of {games2.Count()} games, {genreCompared.Count()} are devloped by {userPublisher}, which is {genrePercentage}%.\n");
+                Console.Write($"\nOut of {games3.Count()} games, {genreCompared.Count()} are {userGenre} games, which is {genrePercentage}%.\n");
             }
 
         }        
